@@ -1,0 +1,44 @@
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2015-04-28 11:10:09
+project --topLevelPackage ch.unige.idsi.y15.parkingtest1 --projectName ParkingTest1 --java 6 --packaging JAR
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2015-04-28 11:10:10
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2015-04-28 11:11:41
+hint
+jpa setup --database H2_IN_MEMORY --provider HIBERNATE 
+hint
+class --class ch.unige.idsi.y15.parkingtest1.parkingHandi
+field string --fieldName name
+web mvc setup
+hint
+web mvc all --package ch.unige.idsi.y15.parkingtest1
+web mvc all --package ~.web
+web mvc all --package ch.unige.idsi.y15.parkingtest1
+entity jpa --class ~.ParkingHandi
+field string --fieldName name
+web mvc all --package ~.web
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2015-04-28 11:30:04
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2015-04-28 12:08:40
+web mvc embed map --location "Sydney, Australia" --viewName syndney 
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2015-04-28 16:05:52
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2015-04-30 16:06:20
+test integration --entity ~.ParkingHandi
+controller all --package ~.web
+web mvc all --package ~.web
+controller all --package ~.web
+web mvc all --package ~.web
+test integration --entity ~.ParkingHandi
+web mvc all --package ~.web
+controller all --package ~.web
+test integration --entity ~.ParkingHandi
+// [failed] test integration --entity ~.ParkingHandiDataOnDemand
+// [failed] test integration --entity ~.ParkingHandiIntegrationTest
+test integration --entity ~.ParkingHandi --permitReservedWords 
+test integration --entity ~.ParkingHandi --transactional 
+test integration 
+// [failed] test integration --entity ch.unige.idsi.y15.parkingtest1
+test integration --entity ~.ParkingHandi
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2015-05-01 10:13:56
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2015-05-05 12:04:33
+hint
+field string --fieldName latitude --class ~.ParkingHandi
+field string --fieldName longitude --class ~.ParkingHandi
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2015-05-06 08:28:48

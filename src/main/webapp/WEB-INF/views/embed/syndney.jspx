@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:embed="urn:jsptagdir:/WEB-INF/tags/embed" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" version="2.0">
+    <jsp:output omit-xml-declaration="yes"/>
+    <util:panel id="title" title="Syndney">
+        <embed:map id="map_syndney" location="Sydney, Australia" z="5g4PkmPZ4VG1/+1GdcO+Xt8wl5c="/>
+    </util:panel>
+</div>

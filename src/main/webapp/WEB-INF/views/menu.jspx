@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" id="menu" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
+        <menu:category id="c_parkinghandi" z="v8vIFLWnzFclLzw9GZsmGR15J70=">
+            <menu:item id="i_parkinghandi_new" messageCode="global_menu_new" url="/parkinghandis?form" z="BFFgSE5/PpInO4rSO1JS6l5q+SI="/>
+            <menu:item id="i_parkinghandi_list" messageCode="global_menu_list" url="/parkinghandis?page=1&amp;size=${empty param.size ? 10 : param.size}" z="oa8ajyzZ8DywMm22LASHhVR/pE0="/>
+        </menu:category>
+        <menu:category id="c_embedded" z="LRTVSLfH1//iHuBP77kc72qGGb8=">
+            <menu:item id="i_embedded___embedsyndney_id" messageCode="global_generic" url="//embed/syndney" z="QPWUtJQoVCZhoyt1BwXF8fJCcz8="/>
+        </menu:category>
+    </menu:menu>
+</div>
