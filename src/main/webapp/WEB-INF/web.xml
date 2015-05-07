@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
-<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
   <display-name>ParkingTest1</display-name>
   <description>Roo generated ParkingTest1 application</description>
   <context-param>
@@ -70,7 +70,7 @@
     <location>/resourceNotFound</location>
   </error-page>
   <servlet>
-    <description/>
+    <description></description>
     <display-name>Parser</display-name>
     <servlet-name>Parser</servlet-name>
     <servlet-class>ch.unige.idsi.y15.parkingtest1.Parser</servlet-class>
@@ -78,5 +78,15 @@
   <servlet-mapping>
     <servlet-name>Parser</servlet-name>
     <url-pattern>/Parser</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetCoordinate</display-name>
+    <servlet-name>GetCoordinate</servlet-name>
+    <servlet-class>ch.unige.idsi.y15.parkingtest1.GetCoordinate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetCoordinate</servlet-name>
+    <url-pattern>/GetCoordinate</url-pattern>
   </servlet-mapping>
 </web-app>

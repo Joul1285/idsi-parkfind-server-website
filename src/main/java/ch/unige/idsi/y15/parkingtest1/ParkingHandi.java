@@ -14,10 +14,6 @@ public class ParkingHandi {
      */
     private String name;
 
-    public ParkingHandi(String name) {
-        this.name = name;
-    }
-
     /**
      */
     private String latitude;
