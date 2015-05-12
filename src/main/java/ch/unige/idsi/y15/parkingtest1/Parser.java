@@ -56,16 +56,17 @@ public class Parser extends HttpServlet {
 		// TODO Auto-generated method stub
 
 		System.out.println("process start...");
-		// File dir1 = new File (".");
-		// System.out.println ("Current dir : " + dir1.getCanonicalPath());
 
-		// Get KMZ file from openGeneva and save it
-		URL u = new URL(
-				"http://ge.ch/ags1/rest/services/Mobilite/MapServer/33/query?text=&geometry=&geometryType=esriGeometryPoint&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&objectIds=&where=1%3D1&time=&returnCountOnly=false&returnIdsOnly=false&returnGeometry=true&maxAllowableOffset=&outSR=&outFields=&f=kmz");
-		String fileName = "ParkingHandi";
+		URL urlHandi = new URL("http://ge.ch/ags1/rest/services/Mobilite/MapServer/33/query?text=&geometry=&geometryType=esriGeometryPoint&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&objectIds=&where=1%3D1&time=&returnCountOnly=false&returnIdsOnly=false&returnGeometry=true&maxAllowableOffset=&outSR=&outFields=&f=kmz");
+		getKMZ(urlHandi, "Handi");
+		
+		URL urlPublique = new URL("http://ge.ch/ags1/rest/services/Mobilite/MapServer/32/query?text=&geometry=&geometryType=esriGeometryPoint&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&objectIds=&where=1%3D1&time=&returnCountOnly=false&returnIdsOnly=false&returnGeometry=true&maxAllowableOffset=&outSR=&outFields=&f=kmz");
+		getKMZ(urlPublique, "Publique");
 
-		// Call function to get the KMZ file, save it and parse it
-		getKMZ(u, fileName);
+		
+		URL urlStationnement  = new URL("http://ge.ch/ags1/rest/services/Mobilite/MapServer/36/query?text=&geometry=&geometryType=esriGeometryPoint&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&objectIds=&where=1%3D1&time=&returnCountOnly=false&returnIdsOnly=false&returnGeometry=true&maxAllowableOffset=&outSR=&outFields=&f=kmz");
+		getKMZ(urlStationnement, "Stationnement");
+		
 
 		System.out.println("process end");
 	}
