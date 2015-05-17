@@ -4,6 +4,8 @@
 package ch.unige.idsi.y15.parkingtest1.web;
 
 import ch.unige.idsi.y15.parkingtest1.ParkingHandi;
+import ch.unige.idsi.y15.parkingtest1.ParkingPublique;
+import ch.unige.idsi.y15.parkingtest1.ParkingVoie;
 import ch.unige.idsi.y15.parkingtest1.web.ApplicationConversionServiceFactoryBean;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.core.convert.converter.Converter;
@@ -37,10 +39,64 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         };
     }
     
+    public Converter<ParkingPublique, String> ApplicationConversionServiceFactoryBean.getParkingPubliqueToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<ch.unige.idsi.y15.parkingtest1.ParkingPublique, java.lang.String>() {
+            public String convert(ParkingPublique parkingPublique) {
+                return new StringBuilder().append(parkingPublique.getName()).append(' ').append(parkingPublique.getLatitude()).append(' ').append(parkingPublique.getLongitude()).toString();
+            }
+        };
+    }
+    
+    public Converter<Long, ParkingPublique> ApplicationConversionServiceFactoryBean.getIdToParkingPubliqueConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, ch.unige.idsi.y15.parkingtest1.ParkingPublique>() {
+            public ch.unige.idsi.y15.parkingtest1.ParkingPublique convert(java.lang.Long id) {
+                return ParkingPublique.findParkingPublique(id);
+            }
+        };
+    }
+    
+    public Converter<String, ParkingPublique> ApplicationConversionServiceFactoryBean.getStringToParkingPubliqueConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, ch.unige.idsi.y15.parkingtest1.ParkingPublique>() {
+            public ch.unige.idsi.y15.parkingtest1.ParkingPublique convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), ParkingPublique.class);
+            }
+        };
+    }
+    
+    public Converter<ParkingVoie, String> ApplicationConversionServiceFactoryBean.getParkingVoieToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<ch.unige.idsi.y15.parkingtest1.ParkingVoie, java.lang.String>() {
+            public String convert(ParkingVoie parkingVoie) {
+                return new StringBuilder().append(parkingVoie.getName()).append(' ').append(parkingVoie.getLatitude()).append(' ').append(parkingVoie.getLongitude()).toString();
+            }
+        };
+    }
+    
+    public Converter<Long, ParkingVoie> ApplicationConversionServiceFactoryBean.getIdToParkingVoieConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, ch.unige.idsi.y15.parkingtest1.ParkingVoie>() {
+            public ch.unige.idsi.y15.parkingtest1.ParkingVoie convert(java.lang.Long id) {
+                return ParkingVoie.findParkingVoie(id);
+            }
+        };
+    }
+    
+    public Converter<String, ParkingVoie> ApplicationConversionServiceFactoryBean.getStringToParkingVoieConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, ch.unige.idsi.y15.parkingtest1.ParkingVoie>() {
+            public ch.unige.idsi.y15.parkingtest1.ParkingVoie convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), ParkingVoie.class);
+            }
+        };
+    }
+    
     public void ApplicationConversionServiceFactoryBean.installLabelConverters(FormatterRegistry registry) {
         registry.addConverter(getParkingHandiToStringConverter());
         registry.addConverter(getIdToParkingHandiConverter());
         registry.addConverter(getStringToParkingHandiConverter());
+        registry.addConverter(getParkingPubliqueToStringConverter());
+        registry.addConverter(getIdToParkingPubliqueConverter());
+        registry.addConverter(getStringToParkingPubliqueConverter());
+        registry.addConverter(getParkingVoieToStringConverter());
+        registry.addConverter(getIdToParkingVoieConverter());
+        registry.addConverter(getStringToParkingVoieConverter());
     }
     
     public void ApplicationConversionServiceFactoryBean.afterPropertiesSet() {

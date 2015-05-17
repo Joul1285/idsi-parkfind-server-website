@@ -10,5 +10,13 @@
         <menu:category id="c_embedded" z="LRTVSLfH1//iHuBP77kc72qGGb8=">
             <menu:item id="i_embedded___embedsyndney_id" messageCode="global_generic" url="//embed/syndney" z="QPWUtJQoVCZhoyt1BwXF8fJCcz8="/>
         </menu:category>
+        <menu:category id="c_parkingpublique" z="rlDcOvSDKCiz/P9MCDtIPmquaOg=">
+            <menu:item id="i_parkingpublique_new" messageCode="global_menu_new" url="/parkingpubliques?form" z="a8i1ueFdhPwZNzyfWQSqr2xHe7U="/>
+            <menu:item id="i_parkingpublique_list" messageCode="global_menu_list" url="/parkingpubliques?page=1&amp;size=${empty param.size ? 10 : param.size}" z="Lolwq/J7GFD+h7MG6JUVTMkdx5E="/>
+        </menu:category>
+        <menu:category id="c_parkingvoie" z="w8a86M/BMJGAXV24mOfREvy2PaM=">
+            <menu:item id="i_parkingvoie_new" messageCode="global_menu_new" url="/parkingvoies?form" z="+0fD4zPllernXlYD7nFhETcsFE0="/>
+            <menu:item id="i_parkingvoie_list" messageCode="global_menu_list" url="/parkingvoies?page=1&amp;size=${empty param.size ? 10 : param.size}" z="pR0Z/oM5DsVUTL3TbC9lp+wjZKI="/>
+        </menu:category>
     </menu:menu>
 </div>

@@ -42,3 +42,41 @@ hint
 field string --fieldName latitude --class ~.ParkingHandi
 field string --fieldName longitude --class ~.ParkingHandi
 // Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2015-05-06 08:28:48
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2015-05-17 15:14:07
+hint
+help
+hint
+hint entities
+entity jpa --class ParkingPublique
+hint
+field string --fieldName name 
+field string --fieldName latitude
+field string --fieldName longitude
+hint
+web mvc all --package ch.unige.idsi.y15.parkingtest1.web
+entity jpa --class ParkingVoie
+field string --fieldName name 
+field string --fieldName latitude
+field string --fieldName longitude
+web mvc all --package ch.unige.idsi.y15.parkingtest1.web
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2015-05-17 16:06:30
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2015-05-17 16:07:52
+entity jpa --class ParkingVoie
+field string --fieldName name
+field string --fieldName latitude
+field string --fieldName longitude
+web mvc all --package ch.unige.idsi.y15.parkingtest1.web
+web mvc all --package ch.unige.idsi.y15.parkingtest1.web
+web mvc all --package ch.unige.idsi.y15.parkingtest1.web
+web mvc all --package ch.unige.idsi.y15.parkingtest1
+web mvc all --package ch.unige.idsi.y15.parkingtest1
+web mvc all --package ch.unige.idsi.y15.parkingtest1
+web mvc all --package ch.unige.idsi.y15.parkingtest1.web
+entity jpa --class ParkingVoie
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2015-05-17 16:24:08
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2015-05-17 16:25:25
+entity jpa --class ParkingVoie
+field string name
+field string latitude
+field string longitude
+web mvc all --package ch.unige.idsi.y15.parkingtest1.web

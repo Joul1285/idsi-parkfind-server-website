@@ -1,9 +1,9 @@
 <aspectj>
 <aspects>
-<aspect name="ch.unige.idsi.y15.parkingtest1.ParkingHandiDataOnDemand_Roo_DataOnDemand"/>
-<aspect name="ch.unige.idsi.y15.parkingtest1.ParkingHandiIntegrationTest_Roo_Configurable"/>
 <aspect name="ch.unige.idsi.y15.parkingtest1.ParkingHandiDataOnDemand_Roo_Configurable"/>
 <aspect name="ch.unige.idsi.y15.parkingtest1.ParkingHandiIntegrationTest_Roo_IntegrationTest"/>
+<aspect name="ch.unige.idsi.y15.parkingtest1.ParkingHandiDataOnDemand_Roo_DataOnDemand"/>
+<aspect name="ch.unige.idsi.y15.parkingtest1.ParkingHandiIntegrationTest_Roo_Configurable"/>
 </aspects>
 </aspectj>
 

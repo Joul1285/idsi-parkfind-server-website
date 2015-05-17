@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_ch_unige_idsi_y15_parkingtest1_ParkingVoie" items="${parkingvoies}" z="63psdSwcZvi8bVOeO30a707OcVc=">
+        <table:table data="${parkingvoies}" id="l_ch_unige_idsi_y15_parkingtest1_ParkingVoie" path="/parkingvoies" z="Erow2jpT9RKf1360DCfu9qR6e1s=">
+            <table:column id="c_ch_unige_idsi_y15_parkingtest1_ParkingVoie_name" property="name" z="SyXLZYJabZpLEBzpMfftVCTg/Mo="/>
+            <table:column id="c_ch_unige_idsi_y15_parkingtest1_ParkingVoie_latitude" property="latitude" z="ZuSNqQFDebsmYPSmrPyeAT6H2Hg="/>
+            <table:column id="c_ch_unige_idsi_y15_parkingtest1_ParkingVoie_longitude" property="longitude" z="jn7gZeyaod1RbCXfC/zvYSjyiUk="/>
+        </table:table>
+    </page:list>
+</div>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_ch_unige_idsi_y15_parkingtest1_ParkingPublique" modelAttribute="parkingPublique" path="/parkingpubliques" render="${empty dependencies}" z="tzQUjLIFSXMdJcZCrsBFlgFAAWU=">
+        <field:input field="name" id="c_ch_unige_idsi_y15_parkingtest1_ParkingPublique_name" z="90KEEW2Q4OWKW3t4t61xl32cpkE="/>
+        <field:input field="latitude" id="c_ch_unige_idsi_y15_parkingtest1_ParkingPublique_latitude" z="+1eo1RavvxuF+eoOZhVu28bfhSY="/>
+        <field:input field="longitude" id="c_ch_unige_idsi_y15_parkingtest1_ParkingPublique_longitude" z="v56VkknN3iBakziBmQOyMSLfM6k="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_ch_unige_idsi_y15_parkingtest1_ParkingPublique" render="${not empty dependencies}" z="4A87iPJdEOc5g/Q9aybvudPhUik="/>
+</div>

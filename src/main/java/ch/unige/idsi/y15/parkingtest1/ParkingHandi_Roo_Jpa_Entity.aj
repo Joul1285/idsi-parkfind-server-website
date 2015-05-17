@@ -24,10 +24,6 @@ privileged aspect ParkingHandi_Roo_Jpa_Entity {
     @Column(name = "version")
     private Integer ParkingHandi.version;
     
-    public ParkingHandi.new() {
-        super();
-    }
-
     public Long ParkingHandi.getId() {
         return this.id;
     }

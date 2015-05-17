@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_ch_unige_idsi_y15_parkingtest1_ParkingPublique" object="${parkingpublique}" path="/parkingpubliques" z="ETqJ4PStkFjW5435hcGocO+LIUw=">
+        <field:display field="name" id="s_ch_unige_idsi_y15_parkingtest1_ParkingPublique_name" object="${parkingpublique}" z="WGph0r+S0cjw8n6C1BEo7odDNnU="/>
+        <field:display field="latitude" id="s_ch_unige_idsi_y15_parkingtest1_ParkingPublique_latitude" object="${parkingpublique}" z="Ol+EsWIJVK9LDB2w1PT430GWIEg="/>
+        <field:display field="longitude" id="s_ch_unige_idsi_y15_parkingtest1_ParkingPublique_longitude" object="${parkingpublique}" z="/6I21wdX4zOMAQThZIjpr9DAZ38="/>
+    </page:show>
+</div>

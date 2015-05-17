@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.lang.reflect.Constructor;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -29,7 +30,10 @@ import de.micromata.opengis.kml.v_2_2_0.Coordinate;
 import de.micromata.opengis.kml.v_2_2_0.Document;
 import de.micromata.opengis.kml.v_2_2_0.Feature;
 import de.micromata.opengis.kml.v_2_2_0.Folder;
+import de.micromata.opengis.kml.v_2_2_0.Geometry;
 import de.micromata.opengis.kml.v_2_2_0.Kml;
+import de.micromata.opengis.kml.v_2_2_0.LineString;
+import de.micromata.opengis.kml.v_2_2_0.MultiGeometry;
 import de.micromata.opengis.kml.v_2_2_0.Placemark;
 import de.micromata.opengis.kml.v_2_2_0.Point;
 
@@ -57,25 +61,26 @@ public class Parser extends HttpServlet {
 
 		System.out.println("process start...");
 
-		URL urlHandi = new URL("http://ge.ch/ags1/rest/services/Mobilite/MapServer/33/query?text=&geometry=&geometryType=esriGeometryPoint&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&objectIds=&where=1%3D1&time=&returnCountOnly=false&returnIdsOnly=false&returnGeometry=true&maxAllowableOffset=&outSR=&outFields=&f=kmz");
+		URL urlHandi = new URL(
+				"http://ge.ch/ags1/rest/services/Mobilite/MapServer/33/query?text=&geometry=&geometryType=esriGeometryPoint&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&objectIds=&where=1%3D1&time=&returnCountOnly=false&returnIdsOnly=false&returnGeometry=true&maxAllowableOffset=&outSR=&outFields=&f=kmz");
 		getKMZ(urlHandi, "Handi");
-		
-		URL urlPublique = new URL("http://ge.ch/ags1/rest/services/Mobilite/MapServer/32/query?text=&geometry=&geometryType=esriGeometryPoint&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&objectIds=&where=1%3D1&time=&returnCountOnly=false&returnIdsOnly=false&returnGeometry=true&maxAllowableOffset=&outSR=&outFields=&f=kmz");
+
+		URL urlPublique = new URL(
+				"http://ge.ch/ags1/rest/services/Mobilite/MapServer/32/query?text=&geometry=&geometryType=esriGeometryPoint&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&objectIds=&where=1%3D1&time=&returnCountOnly=false&returnIdsOnly=false&returnGeometry=true&maxAllowableOffset=&outSR=&outFields=&f=kmz");
 		getKMZ(urlPublique, "Publique");
 
-		
-		URL urlStationnement  = new URL("http://ge.ch/ags1/rest/services/Mobilite/MapServer/36/query?text=&geometry=&geometryType=esriGeometryPoint&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&objectIds=&where=1%3D1&time=&returnCountOnly=false&returnIdsOnly=false&returnGeometry=true&maxAllowableOffset=&outSR=&outFields=&f=kmz");
-		getKMZ(urlStationnement, "Stationnement");
-		
+		URL urlVoie = new URL(
+				"http://ge.ch/ags1/rest/services/Mobilite/MapServer/36/query?text=&geometry=&geometryType=esriGeometryPoint&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&objectIds=&where=1%3D1&time=&returnCountOnly=false&returnIdsOnly=false&returnGeometry=true&maxAllowableOffset=&outSR=&outFields=&f=kmz");
+		getKMZ(urlVoie, "Voie");
 
 		System.out.println("process end");
 	}
 
-	public static void getKMZ(URL u, String fileName) throws IOException {
+	public static void getKMZ(URL u, String type) throws IOException {
 		URLConnection uc = u.openConnection();
 		uc.connect();
 		InputStream in = uc.getInputStream();
-		File file = new File(fileName + ".kmz");
+		File file = new File(type + ".kmz");
 		OutputStream out = new FileOutputStream(file);
 
 		final int BUF_SIZE = 1 << 8;
@@ -86,6 +91,11 @@ public class Parser extends HttpServlet {
 		}
 		in.close();
 		out.close();
+
+		parseKMZ(file, type);
+	}
+
+	public static void parseKMZ(File file, String type) throws IOException {
 
 		// Open and parse KML file
 		final Kml[] kml = Kml.unmarshalFromKmz(file);
@@ -100,36 +110,68 @@ public class Parser extends HttpServlet {
 			for (Object ftg : tg) {
 
 				Placemark g = (Placemark) ftg;
-				System.out.println(g.getName());
-				if (g.getName() != null) {
-					Point point = (Point) g.getGeometry();
-					List<Coordinate> coordinates = point.getCoordinates();
-					for (Coordinate c : coordinates) {
 
-						System.out.println(c.getLatitude());
-						System.out.println(c.getLongitude());
+				List<Coordinate> coordinates = null;
 
-						System.out.println("load loader function");
-						onApplicationEvent(g.getName(),
-								String.valueOf(c.getLatitude()),
-								String.valueOf(c.getLongitude()));
+				// check if the node under placemark is MultiGeometry
+				if ((g.getGeometry() instanceof MultiGeometry)) {
+
+					MultiGeometry mpg = (MultiGeometry) g.getGeometry();
+					List<Geometry> gmList = mpg.getGeometry();
+					// Get all the geometries and traverse them one by one
+					for (Geometry geoItr : gmList) {
+						LineString multiGeoPoly = (LineString) geoItr;
+						coordinates = multiGeoPoly.getCoordinates();
+
 					}
 
+				}
+				// Else parse only point
+				else {
+					Point point = (Point) g.getGeometry();
+					coordinates = point.getCoordinates();
+
+				}
+				for (Coordinate c : coordinates) {
+
+					System.out.println(c.getLatitude());
+					System.out.println(c.getLongitude());
+					newParking(type, g.getName(),
+							String.valueOf(c.getLatitude()),
+							String.valueOf(c.getLongitude()));
 				}
 
 			}
 		}
 	}
 
+
+
 	@Transactional
-	public static void onApplicationEvent(String name, String latitude,
+	public static void newParking(String type, String name, String latitude,
 			String longitude) {
 		System.out.println("before: " + ParkingHandi.countParkingHandis());
-		ParkingHandi parkingHandi = new ParkingHandi();
-		parkingHandi.persist();
-		parkingHandi.setName(name);
-		parkingHandi.setLatitude(latitude);
-		parkingHandi.setLongitude(longitude);
+		if (type == "Handi") {
+			ParkingHandi newObject = new ParkingHandi();
+			newObject.setName(name);
+			newObject.setLatitude(latitude);
+			newObject.setLongitude(longitude);
+			newObject.persist();
+		}
+		if (type == "Publique") {
+			ParkingPublique newObject = new ParkingPublique();
+			newObject.setName(name);
+			newObject.setLatitude(latitude);
+			newObject.setLongitude(longitude);
+			newObject.persist();
+		}
+		if (type == "Voie") {
+			ParkingVoie newObject = new ParkingVoie();
+			newObject.setName(name);
+			newObject.setLatitude(latitude);
+			newObject.setLongitude(longitude);
+			newObject.persist();
+		}
 
 		System.out.println("after: " + ParkingHandi.countParkingHandis());
 	}
