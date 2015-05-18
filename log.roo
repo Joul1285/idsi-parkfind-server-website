@@ -80,3 +80,4 @@ field string name
 field string latitude
 field string longitude
 web mvc all --package ch.unige.idsi.y15.parkingtest1.web
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2015-05-18 08:32:03

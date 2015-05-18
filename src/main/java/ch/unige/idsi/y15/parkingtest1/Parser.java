@@ -151,21 +151,21 @@ public class Parser extends HttpServlet {
 	public static void newParking(String type, String name, String latitude,
 			String longitude) {
 		System.out.println("before: " + ParkingHandi.countParkingHandis());
-		if (type == "Handi") {
+		if (type.equals("Handi")) {
 			ParkingHandi newObject = new ParkingHandi();
 			newObject.setName(name);
 			newObject.setLatitude(latitude);
 			newObject.setLongitude(longitude);
 			newObject.persist();
 		}
-		if (type == "Publique") {
+		if (type.equals("Publique")) {
 			ParkingPublique newObject = new ParkingPublique();
 			newObject.setName(name);
 			newObject.setLatitude(latitude);
 			newObject.setLongitude(longitude);
 			newObject.persist();
 		}
-		if (type == "Voie") {
+		if (type.equals("Voie")) {
 			ParkingVoie newObject = new ParkingVoie();
 			newObject.setName(name);
 			newObject.setLatitude(latitude);
