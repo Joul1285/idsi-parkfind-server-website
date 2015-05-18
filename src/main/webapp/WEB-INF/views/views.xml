@@ -20,5 +20,6 @@
   <definition name="uncaughtException" extends="public">
     <put-attribute name="body" value="/WEB-INF/views/uncaughtException.jspx" />
   </definition>
+  
 
 </tiles-definitions>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:spring="http://www.springframework.org/tags"
+	xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	<spring:message code="label_map_index" htmlEscape="false" var="title" />
+	<util:panel id="title" title="${title}">
+		<spring:message code="application_name" htmlEscape="false"
+			var="app_name" />
+
+	</util:panel>
+	<style type="text/css">
+		html, body, #map-canvas {
+		height: 300px;
+		margin: 0;
+		padding: 0;
+		}
+	</style>
+	
+	
+	
+	<div id="map-canvas"></div>
+
+	<!--   AIzaSyBEYawc0Se9NbmooNVjwHyIeoEl7brIYhw -->
+
+
+	<script type="text/javascript"
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEYawc0Se9NbmooNVjwHyIeoEl7brIYhw">
+	</script>
+	<script type="text/javascript">
+		var j;
+	</script>
+	
+	<script type="text/javascript">
+		function initialize() {
+			var mapOptions = {
+				center : {
+					lat : 46.2050295,
+					lng : 6.1440885
+				},
+				zoom : 11
+			};
+			var map = new google.maps.Map(
+					document.getElementById('map-canvas'), mapOptions);
+			
+			${markers}
+			
+		}
+		google.maps.event.addDomListener(window, 'load', initialize);
+	</script>
+</div>
+
