@@ -1,27 +1,33 @@
 package ch.unige.idsi.y15.parkingtest1;
 
-import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
+/**
+* Recieve parking's type in parameter (if no parameter just display the map empty)
+* Get from java object all parking points, load a google map and put in parameter all points on map
+*
+* @author  Ludmila Banaru
+* @author  Julien Burn
+* @version 1.0
+* @since   2015-05-20 
+*/
 @RequestMapping("/map/**")
 @Controller
 public class Map {
 
-
-
+	/**
+	 * Get type on GET parameter and return the map with markers points generated
+	 * @param type
+	 * @param pModel
+	 * @return
+	 */
 	@RequestMapping(method = RequestMethod.GET, value = "/map/{type}")
 	public String index(@PathVariable String type, final ModelMap pModel) {
 		System.out.println(type);
@@ -31,9 +37,18 @@ public class Map {
 		return "map/index";
 	}
 
+	/**
+	 * Create all markers from a parking's type.
+	 * Return all markers as google map javascript markers
+	 * 
+	 * @param type
+	 * @return javascript String code
+	 */
 	public String generateMarker(String type) {
 		String marker = "";
 		System.out.println("generateMarker");
+		
+		//Generate markers depending of the type
 		if (type.equals("handi")) {
 			List<ParkingHandi> parkingList = ParkingHandi.findAllParkingHandis();
 			for (Iterator<ParkingHandi> iterator = parkingList.iterator(); iterator

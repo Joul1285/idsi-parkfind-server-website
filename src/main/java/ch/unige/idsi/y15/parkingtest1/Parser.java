@@ -1,17 +1,10 @@
 package ch.unige.idsi.y15.parkingtest1;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.lang.reflect.Constructor;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.List;
@@ -21,9 +14,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.context.ApplicationListener;
-import org.springframework.context.event.ContextRefreshedEvent;
-import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import de.micromata.opengis.kml.v_2_2_0.Coordinate;
@@ -38,8 +28,16 @@ import de.micromata.opengis.kml.v_2_2_0.Placemark;
 import de.micromata.opengis.kml.v_2_2_0.Point;
 
 /**
- * Servlet implementation class Parser
- */
+* Get and store KML files from sitg services about "parking handicapé", "parking public" and "parking voie public".
+* Parse those files to retrieve latitude and longitude point.
+* Create new object Parkings with latitude and longitude points.
+* 
+*
+* @author  Ludmila Banaru
+* @author  Julien Burn
+* @version 1.0
+* @since   2015-05-20 
+*/
 public class Parser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -52,6 +50,8 @@ public class Parser extends HttpServlet {
 	}
 
 	/**
+	 * Initialize urls needed and sent it to GetKMZ function
+	 * 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
@@ -76,6 +76,14 @@ public class Parser extends HttpServlet {
 		System.out.println("process end");
 	}
 
+	/**
+	 * 
+	 * Get KMZ file from URL in parameter, store the file depending of the type (String) 
+	 * 
+	 * @param u
+	 * @param type
+	 * @throws IOException
+	 */
 	public static void getKMZ(URL u, String type) throws IOException {
 		URLConnection uc = u.openConnection();
 		uc.connect();
@@ -95,6 +103,14 @@ public class Parser extends HttpServlet {
 		parseKMZ(file, type);
 	}
 
+	/**
+	 * Parse KMZ file depending of the type.
+	 * Get latitude and longitude points and send it to newParking function
+	 * 
+	 * @param file
+	 * @param type
+	 * @throws IOException
+	 */
 	public static void parseKMZ(File file, String type) throws IOException {
 
 		// Open and parse KML file
@@ -136,6 +152,7 @@ public class Parser extends HttpServlet {
 
 					System.out.println(c.getLatitude());
 					System.out.println(c.getLongitude());
+					//call newParking function with parking's name, latitude and longitude points 
 					newParking(type, g.getName(),
 							String.valueOf(c.getLatitude()),
 							String.valueOf(c.getLongitude()));
@@ -146,34 +163,49 @@ public class Parser extends HttpServlet {
 	}
 
 
-
+	/**
+	 * Store new java object depending of the type with the name, latitude and longitude points recieve in parameter
+	 * 
+	 * @param type
+	 * @param name
+	 * @param latitude
+	 * @param longitude
+	 */
 	@Transactional
 	public static void newParking(String type, String name, String latitude,
 			String longitude) {
-		System.out.println("before: " + ParkingHandi.countParkingHandis());
+		//store different type of parking depending of type recieve
 		if (type.equals("Handi")) {
+			//count number of parking before and after for debuging
+			System.out.println("before: " + ParkingHandi.countParkingHandis());
 			ParkingHandi newObject = new ParkingHandi();
 			newObject.setName(name);
 			newObject.setLatitude(latitude);
 			newObject.setLongitude(longitude);
 			newObject.persist();
+			//count number of parking before and after for debuging
+			System.out.println("after: " + ParkingHandi.countParkingHandis());
 		}
 		if (type.equals("Publique")) {
+			System.out.println("before: " + ParkingPublique.countParkingPubliques()); 
 			ParkingPublique newObject = new ParkingPublique();
 			newObject.setName(name);
 			newObject.setLatitude(latitude);
 			newObject.setLongitude(longitude);
 			newObject.persist();
+			System.out.println("after: " + ParkingPublique.countParkingPubliques());
 		}
 		if (type.equals("Voie")) {
+			System.out.println("before: " + ParkingVoie.countParkingVoies());
 			ParkingVoie newObject = new ParkingVoie();
 			newObject.setName(name);
 			newObject.setLatitude(latitude);
 			newObject.setLongitude(longitude);
 			newObject.persist();
+			System.out.println("after: " + ParkingVoie.countParkingVoies());
 		}
 
-		System.out.println("after: " + ParkingHandi.countParkingHandis());
+		
 	}
 
 	/**

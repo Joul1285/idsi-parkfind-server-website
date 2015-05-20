@@ -12,8 +12,15 @@ import javax.servlet.http.HttpServletResponse;
 
 
 /**
- * Servlet implementation class GetCoordinate
- */
+* Receive in parameter latitude and longitude from user and parking type needed
+* url exemple: /GetCoordinate?lat=46.1948892&long=6.1398835&type=Handi
+* Return XML with position of closest parking type needed.
+* *
+* @author  Ludmila Banaru
+* @author  Julien Burn
+* @version 1.0
+* @since   2015-05-20 
+*/
 public class GetCoordinate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -26,20 +33,20 @@ public class GetCoordinate extends HttpServlet {
 	}
 
 	/**
+	 * Get
+	 * 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
-	 * 
-	 *      url exemple: /GetCoordinate?lat=46.1948892&long=6.1398835&type=Handi
-	 * 
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
+		//initialize final result
 		String[] result_shortest = null;
+		//initialize parkingList who get all parking from a type 
 		List<?> parkingList = null;
 
-		// Get parameters in URL (latitude and longitude)
+		// Get parameters in URL (latitude and longitude and name)
 		double getLatitude = Double.parseDouble(request.getParameter("lat"));
 		double getLongitude = Double.parseDouble(request.getParameter("long"));
 		String getType = request.getParameter("type");
@@ -48,6 +55,7 @@ public class GetCoordinate extends HttpServlet {
 		System.out.println(getLongitude);
 		System.out.println(getType);
 
+		//Get all parking store in java object depending of the type needed
 		if (getType.equals("Handi")) {
 			System.out.println("ParkingHandi");
 			parkingList = ParkingHandi.findAllParkingHandis();
@@ -83,17 +91,21 @@ public class GetCoordinate extends HttpServlet {
 
 	}
 
-	/**
-	 * @param lat_origin
-	 * @param lng_origin
-	 * @param parkingList
-	 * @return
-	 */
+/**
+ * Calculate distance between source points and all parkings points
+ * Return the shortest location
+ * 
+ * @param lat_origin
+ * @param lng_origin
+ * @param parkingList
+ * @param type
+ * @return
+ */
 	private static String[] gps2m(double lat_origin, double lng_origin, List<?> parkingList, String type) {
 		double pk = (double) (180 / 3.14169);
 		double a1 = lat_origin / pk;
 		double a2 = lng_origin / pk;
-		double shortest = 1000000.0; //initialise shortest le plus grand possible
+		double shortest = 1000000.0; //initialize shortest bigger as possible
 		
 		double b2 = 0;
 		double b1 = 0;
