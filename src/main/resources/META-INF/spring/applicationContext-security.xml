@@ -17,6 +17,8 @@
         <intercept-url pattern="/**" access="permitAll" />
         <intercept-url pattern="/Parser" access="permitAll" />
         <intercept-url pattern="/GetCoordinate" access="permitAll" />
+        <intercept-url pattern="/Parser/**" access="permitAll" />
+        <intercept-url pattern="/GetCoordinate/**" access="permitAll" />
     </http>
     <!-- Configure Authentication mechanism -->
     <authentication-manager alias="authenticationManager">
