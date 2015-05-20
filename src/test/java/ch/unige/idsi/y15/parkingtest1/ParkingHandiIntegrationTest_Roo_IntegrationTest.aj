@@ -3,13 +3,16 @@
 
 package ch.unige.idsi.y15.parkingtest1;
 
-import ch.unige.idsi.y15.parkingtest1.ParkingHandi;
+import ch.unige.idsi.y15.parkfind_roo.ParkingHandi;
 import ch.unige.idsi.y15.parkingtest1.ParkingHandiDataOnDemand;
 import ch.unige.idsi.y15.parkingtest1.ParkingHandiIntegrationTest;
+
 import java.util.Iterator;
 import java.util.List;
+
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

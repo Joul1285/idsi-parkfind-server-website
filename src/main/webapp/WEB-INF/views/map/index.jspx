@@ -73,7 +73,7 @@ html, body {
 </style>
 
 
-	<div id="alt_header"><img class="img" src="/ParkingTest1/resources/images/logo.png"/></div>
+	<div id="alt_header"><img class="img" src="/resources/images/logo.png"/></div>
 	<div id="welcome">
 		<p>Bievenue sur ParkFinder! Cette carte affiche les parkings de la région genevoise.<br/> 
 		Choisissez le type de parking dans le menu de gauche pour afficher les marqueurs.</p>
@@ -81,9 +81,9 @@ html, body {
 	<div>
 		<div id="choose_parking">
 			<div><p>Choisissez le type de parking:</p></div>
-			<div class="choose_parking_item"><a href="/ParkingTest1/map/handi"><img class="img" src="/ParkingTest1/resources/images/handi.png"/></a></div>
-			<div class="choose_parking_item"><a href="/ParkingTest1/map/publique"><img class="img" src="/ParkingTest1/resources/images/public.png"/></a></div>
-			<div class="choose_parking_item"><a href="/ParkingTest1/map/voie"><img class="img" src="/ParkingTest1/resources/images/voie.png"/></a></div>
+			<div class="choose_parking_item"><a href="/map/handi"><img class="img" src="/resources/images/handi.png"/></a></div>
+			<div class="choose_parking_item"><a href="/map/publique"><img class="img" src="/resources/images/public.png"/></a></div>
+			<div class="choose_parking_item"><a href="/map/voie"><img class="img" src="/resources/images/voie.png"/></a></div>
 		</div>
 		<div id="map-canvas"></div>
 	</div>

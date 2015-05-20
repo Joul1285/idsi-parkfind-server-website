@@ -43,7 +43,7 @@
         The most commonly used annotation is @Autowired, which instructs Spring to
         dependency inject an object into your class.
     -->
-    <context:component-scan base-package="ch.unige.idsi.y15.parkingtest1">
+    <context:component-scan base-package="ch.unige.idsi.y15.parkfind_roo">
         <context:exclude-filter expression=".*_Roo_.*" type="regex"/>
         <context:exclude-filter expression="org.springframework.stereotype.Controller" type="annotation"/>
     </context:component-scan>

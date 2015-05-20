@@ -1,24 +1,24 @@
 <aspectj>
 <aspects>
-<aspect name="ch.unige.idsi.y15.parkingtest1.ParkingPublique_Roo_Configurable"/>
-<aspect name="ch.unige.idsi.y15.parkingtest1.ParkingVoie_Roo_ToString"/>
-<aspect name="ch.unige.idsi.y15.parkingtest1.ParkingPublique_Roo_JavaBean"/>
-<aspect name="ch.unige.idsi.y15.parkingtest1.ParkingPublique_Roo_Jpa_ActiveRecord"/>
-<aspect name="ch.unige.idsi.y15.parkingtest1.ParkingPublique_Roo_ToString"/>
-<aspect name="ch.unige.idsi.y15.parkingtest1.ParkingHandi_Roo_JavaBean"/>
-<aspect name="ch.unige.idsi.y15.parkingtest1.web.ParkingHandiController_Roo_Controller"/>
-<aspect name="ch.unige.idsi.y15.parkingtest1.web.ParkingVoieController_Roo_Controller"/>
-<aspect name="ch.unige.idsi.y15.parkingtest1.ParkingPublique_Roo_Jpa_Entity"/>
-<aspect name="ch.unige.idsi.y15.parkingtest1.web.ParkingPubliqueController_Roo_Controller"/>
-<aspect name="ch.unige.idsi.y15.parkingtest1.ParkingHandi_Roo_ToString"/>
-<aspect name="ch.unige.idsi.y15.parkingtest1.ParkingVoie_Roo_Configurable"/>
-<aspect name="ch.unige.idsi.y15.parkingtest1.ParkingHandi_Roo_Jpa_ActiveRecord"/>
-<aspect name="ch.unige.idsi.y15.parkingtest1.ParkingVoie_Roo_JavaBean"/>
-<aspect name="ch.unige.idsi.y15.parkingtest1.ParkingHandi_Roo_Jpa_Entity"/>
-<aspect name="ch.unige.idsi.y15.parkingtest1.web.ApplicationConversionServiceFactoryBean_Roo_ConversionService"/>
-<aspect name="ch.unige.idsi.y15.parkingtest1.ParkingVoie_Roo_Jpa_ActiveRecord"/>
-<aspect name="ch.unige.idsi.y15.parkingtest1.ParkingVoie_Roo_Jpa_Entity"/>
-<aspect name="ch.unige.idsi.y15.parkingtest1.ParkingHandi_Roo_Configurable"/>
+<aspect name="ch.unige.idsi.y15.parkfind_roo.ParkingVoie_Roo_Jpa_Entity"/>
+<aspect name="ch.unige.idsi.y15.parkfind_roo.ParkingPublique_Roo_Jpa_Entity"/>
+<aspect name="ch.unige.idsi.y15.parkfind_roo.ParkingPublique_Roo_Configurable"/>
+<aspect name="ch.unige.idsi.y15.parkfind_roo.web.ParkingPubliqueController_Roo_Controller"/>
+<aspect name="ch.unige.idsi.y15.parkfind_roo.web.ApplicationConversionServiceFactoryBean_Roo_ConversionService"/>
+<aspect name="ch.unige.idsi.y15.parkfind_roo.ParkingHandi_Roo_Jpa_Entity"/>
+<aspect name="ch.unige.idsi.y15.parkfind_roo.web.ParkingVoieController_Roo_Controller"/>
+<aspect name="ch.unige.idsi.y15.parkfind_roo.ParkingPublique_Roo_Jpa_ActiveRecord"/>
+<aspect name="ch.unige.idsi.y15.parkfind_roo.web.ParkingHandiController_Roo_Controller"/>
+<aspect name="ch.unige.idsi.y15.parkfind_roo.ParkingVoie_Roo_Configurable"/>
+<aspect name="ch.unige.idsi.y15.parkfind_roo.ParkingVoie_Roo_JavaBean"/>
+<aspect name="ch.unige.idsi.y15.parkfind_roo.ParkingHandi_Roo_Configurable"/>
+<aspect name="ch.unige.idsi.y15.parkfind_roo.ParkingHandi_Roo_ToString"/>
+<aspect name="ch.unige.idsi.y15.parkfind_roo.ParkingHandi_Roo_JavaBean"/>
+<aspect name="ch.unige.idsi.y15.parkfind_roo.ParkingPublique_Roo_JavaBean"/>
+<aspect name="ch.unige.idsi.y15.parkfind_roo.ParkingPublique_Roo_ToString"/>
+<aspect name="ch.unige.idsi.y15.parkfind_roo.ParkingVoie_Roo_ToString"/>
+<aspect name="ch.unige.idsi.y15.parkfind_roo.ParkingHandi_Roo_Jpa_ActiveRecord"/>
+<aspect name="ch.unige.idsi.y15.parkfind_roo.ParkingVoie_Roo_Jpa_ActiveRecord"/>
 </aspects>
 </aspectj>
 
