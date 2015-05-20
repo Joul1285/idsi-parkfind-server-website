@@ -97,16 +97,6 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>Map</servlet-name>
-    <url-pattern>/Map</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>map</display-name>
-    <servlet-name>map</servlet-name>
-    <servlet-class>ch.unige.idsi.y15.parkingtest1.map</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>map</servlet-name>
     <url-pattern>/map</url-pattern>
   </servlet-mapping>
 </web-app>

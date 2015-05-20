@@ -62,11 +62,9 @@ public class GetCoordinate extends HttpServlet {
 			parkingList = ParkingVoie.findAllParkingVoies();
 		}
 		
-		
+		//Call shortest methode calculation
 		result_shortest = gps2m(getLatitude, getLongitude, parkingList, getType);
-		
-		
-		
+
 		
 		// Print XML response
 		response.setContentType("application/xml");
@@ -95,10 +93,11 @@ public class GetCoordinate extends HttpServlet {
 		double pk = (double) (180 / 3.14169);
 		double a1 = lat_origin / pk;
 		double a2 = lng_origin / pk;
-		double shortest = 10000.0;
+		double shortest = 1000000.0; //initialise shortest le plus grand possible
 		
 		double b2 = 0;
 		double b1 = 0;
+		double tt = 0;
 		String name = null;
 		String latitude = null;
 		String longitude = null;
@@ -118,25 +117,26 @@ public class GetCoordinate extends HttpServlet {
 				ParkingHandi parkingElement = (ParkingHandi) iterator.next();
 				b1 = Double.parseDouble(parkingElement.getLatitude()) / pk;
 				b2 = Double.parseDouble(parkingElement.getLongitude()) / pk;
-				short_name = parkingElement.getName();
-				short_lat = parkingElement.getLatitude();
-				short_long = parkingElement.getLongitude();
+				name = parkingElement.getName();
+				latitude = parkingElement.getLatitude();
+				longitude = parkingElement.getLongitude();
+				System.out.println(name + " - " + latitude + " - " + longitude);
 			}
 			if (type.equals("Publique")){
 				ParkingPublique parkingElement = (ParkingPublique) iterator.next();
 				b1 = Double.parseDouble(parkingElement.getLatitude()) / pk;
 				b2 = Double.parseDouble(parkingElement.getLongitude()) / pk;
-				short_name = parkingElement.getName();
-				short_lat = parkingElement.getLatitude();
-				short_long = parkingElement.getLongitude();
+				name = parkingElement.getName();
+				latitude = parkingElement.getLatitude();
+				longitude = parkingElement.getLongitude();
 			}
 			if (type.equals("Voie")){
 				ParkingVoie parkingElement = (ParkingVoie) iterator.next();
 				b1 = Double.parseDouble(parkingElement.getLatitude()) / pk;
 				b2 = Double.parseDouble(parkingElement.getLongitude()) / pk;
-				short_name = parkingElement.getName();
-				short_lat = parkingElement.getLatitude();
-				short_long = parkingElement.getLongitude();
+				name = parkingElement.getName();
+				latitude = parkingElement.getLatitude();
+				longitude = parkingElement.getLongitude();
 			}
 
 			
@@ -146,13 +146,11 @@ public class GetCoordinate extends HttpServlet {
 			double t2 = (double) Math.cos(a1) * (double) Math.sin(a2)
 					* (double) Math.cos(b1) * (double) Math.sin(b2);
 			double t3 = (double) Math.sin(a1) * (double) Math.sin(b1);
-			double tt = Math.acos(t1 + t2 + t3) * 6366000;
+			tt = Math.acos(t1 + t2 + t3) * 6366000;
 
 			// If next point is shortest than older shortest point, keep it
 			if (tt < shortest) {
-				System.out.println(tt);
-				
-				System.out.println(name);
+				System.out.println("*****shortest parcours: " + tt + " - " + name);
 				shortest = tt;
 				short_name = name;
 				short_lat = latitude;
@@ -162,7 +160,7 @@ public class GetCoordinate extends HttpServlet {
 		
 		
 		// Create a array with data of the shortest point and return it
-		System.out.println("shortest location is: " + short_name);
+		System.out.println("Final shortest location is: " + short_name + " - " + short_lat + " - " + short_long);
 		String[] result_shortest = { short_name, short_lat, short_long };
 
 		return result_shortest;

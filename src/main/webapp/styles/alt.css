@@ -37,6 +37,7 @@ body {
 }
 
 #menu {
+	display:none;
     background: #eee;
   	position:relative;
   	float:right;  	

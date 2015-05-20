@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <div xmlns:jsp="http://java.sun.com/JSP/Page"
 	xmlns:spring="http://www.springframework.org/tags"
-	xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" version="2.0">
+	xmlns:util="urn:jsptagdir:/WEB-INF/tags/util2" version="2.0">
 	<jsp:directive.page contentType="text/html;charset=UTF-8" />
 	<jsp:output omit-xml-declaration="yes" />
 	<spring:message code="label_map_index" htmlEscape="false" var="title" />
@@ -11,27 +11,94 @@
 
 	</util:panel>
 	<style type="text/css">
-		html, body, #map-canvas {
-		height: 300px;
-		margin: 0;
-		padding: 0;
-		}
-	</style>
+html, body {
+	height: 800px;
+	margin: 0;
+	padding: 0;
+}
+#map-canvas
+{
+	height: 500px;
+	margin: 5px;
+	padding: 5px;
+}
+
+#choose_parking {
+	float: left;
+	width: 230px;
+}
+.choose_parking_item {
+    margin-bottom: 10px;
+}
+
+#menu {
+	display:none !important;
+}
+#footer {
+	display:none !important;
+}
+#header {
+	display:none !important;
+}
+#alt_header {
 	
+}
+.img {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#welcome{
+}
 	
-	
-	<div id="map-canvas"></div>
+p{
+  font-size: 16px;
+text-align: center;
+}
+
+
+#wrapper {
+	width:100% !important;
+	min-width: 100% !important;
+	max-width: 100% !important;
+}
+html, body {
+	height: 100% !important;
+}
+#_title_title_id{
+	display:none !important;
+}
+
+</style>
+
+
+	<div id="alt_header"><img class="img" src="/ParkingTest1/resources/images/logo.png"/></div>
+	<div id="welcome">
+		<p>Bievenue sur ParkFinder! Cette carte affiche les parkings de la région genevoise.<br/> 
+		Choisissez le type de parking dans le menu de gauche pour afficher les marqueurs.</p>
+	</div>
+	<div>
+		<div id="choose_parking">
+			<div><p>Choisissez le type de parking:</p></div>
+			<div class="choose_parking_item"><a href="/ParkingTest1/map/handi"><img class="img" src="/ParkingTest1/resources/images/handi.png"/></a></div>
+			<div class="choose_parking_item"><a href="/ParkingTest1/map/publique"><img class="img" src="/ParkingTest1/resources/images/public.png"/></a></div>
+			<div class="choose_parking_item"><a href="/ParkingTest1/map/voie"><img class="img" src="/ParkingTest1/resources/images/voie.png"/></a></div>
+		</div>
+		<div id="map-canvas"></div>
+	</div>
 
 	<!--   AIzaSyBEYawc0Se9NbmooNVjwHyIeoEl7brIYhw -->
 
 
 	<script type="text/javascript"
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEYawc0Se9NbmooNVjwHyIeoEl7brIYhw">
+		
 	</script>
 	<script type="text/javascript">
 		var j;
 	</script>
-	
+
 	<script type="text/javascript">
 		function initialize() {
 			var mapOptions = {
@@ -43,9 +110,12 @@
 			};
 			var map = new google.maps.Map(
 					document.getElementById('map-canvas'), mapOptions);
+
 			
-			${markers}
-			
+			{
+				${markers}
+			}
+
 		}
 		google.maps.event.addDomListener(window, 'load', initialize);
 	</script>
