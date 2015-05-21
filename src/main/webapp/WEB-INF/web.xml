@@ -81,7 +81,7 @@
     <description></description>
     <display-name>Parser</display-name>
     <servlet-name>Parser</servlet-name>
-    <servlet-class>ch.unige.idsi.y15.parkingtest1.Parser</servlet-class>
+    <servlet-class>ch.unige.idsi.y15.parkfind_roo.Parser</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Parser</servlet-name>
@@ -91,7 +91,7 @@
     <description></description>
     <display-name>GetCoordinate</display-name>
     <servlet-name>GetCoordinate</servlet-name>
-    <servlet-class>ch.unige.idsi.y15.parkingtest1.GetCoordinate</servlet-class>
+    <servlet-class>ch.unige.idsi.y15.parkfind_roo.GetCoordinate</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>GetCoordinate</servlet-name>
@@ -101,10 +101,20 @@
     <description></description>
     <display-name>Map</display-name>
     <servlet-name>Map</servlet-name>
-    <servlet-class>ch.unige.idsi.y15.parkingtest1.Map</servlet-class>
+    <servlet-class>ch.unige.idsi.y15.parkfind_roo.Map</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Map</servlet-name>
     <url-pattern>/map</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ParserLocal</display-name>
+    <servlet-name>ParserLocal</servlet-name>
+    <servlet-class>ch.unige.idsi.y15.parkfind_roo.ParserLocal</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ParserLocal</servlet-name>
+    <url-pattern>/ParserLocal</url-pattern>
   </servlet-mapping>
 </web-app>
